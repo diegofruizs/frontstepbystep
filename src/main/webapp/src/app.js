@@ -3,7 +3,9 @@
         // External dependencies
         'ui.router',
         // Internal modules dependencies       
-        'bookModule'
+        'bookModule',
+        'authorModule',
+        'editorialModule'
 
     ]);
     // Resuelve problemas de las promesas
