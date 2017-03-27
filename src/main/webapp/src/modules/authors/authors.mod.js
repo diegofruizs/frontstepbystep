@@ -1,8 +1,8 @@
 (function (ng) {
     // Definición del módulo
     var mod = ng.module("authorModule", ['ui.router']);
- 
-   // Configuración de los estados del módulo
+
+    // Configuración de los estados del módulo
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/authors/';
@@ -14,18 +14,22 @@
                 url: '/authors/list',
                 // Se define una variable authors (del estado) que toma por valor 
                 // la colección de autores que obtiene utilizando $http.get 
-                 resolve: {
+                resolve: {
                     authors: ['$http', function ($http) {
                             return $http.get('data/authors.json'); // $http retorna un apromesa que aquí no se está manejando si viene con error.
                         }]
                 },
-                // Template que se utilizara para ejecutar el estado
-                templateUrl: basePath + 'authors.list.html',
-                // El controlador guarda en el scope en la variable authorsRecords los datos que trajo el resolve
-                // authorsRecords será visible en el template
-                controller: ['$scope', 'authors', function ($scope, authors) {
-                        $scope.authorsRecords = authors.data;
-                    }]              
+                views: {
+                    'mainView': {
+                        // Template que se utilizara para ejecutar el estado
+                        templateUrl: basePath + 'authors.list.html',
+                        // El controlador guarda en el scope en la variable authorsRecords los datos que trajo el resolve
+                        // authorsRecords será visible en el template
+                        controller: ['$scope', 'authors', function ($scope, authors) {
+                                $scope.authorsRecords = authors.data;
+                            }]
+                    }
+                }
             });
         }
     ]);
