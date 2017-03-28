@@ -1,0 +1,41 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/03/2017, 05:20:11 PM
+    Author     : Rubby
+*/
+
+
+
+.mainHeader {
+    padding: 35px;
+    background-image: url("img_tree.png");
+    background-repeat: no-repeat;
+}
+
+.mainTitle {
+    font-variant: small-caps;
+    font-style: italic;
+}
+
+.footer {
+    height: 59px;
+    margin: 0 auto;
+    color: black;
+    clear: both;
+    padding: 2em 2em;
+    background: #b3ccff;
+    position: relative;
+    top: 508px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerTitle {
+    font-variant: small-caps;
+    font-weight: bold;
+}
