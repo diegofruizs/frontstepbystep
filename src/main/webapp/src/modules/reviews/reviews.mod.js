@@ -19,7 +19,7 @@
                                     return $http.get('data/reviews.json');
                                 }]
                         },
-                        template: '<div ui-view="reviewsView"></div>',
+                        templateUrl: basePath + 'reviews.html',
                         controller: ['$scope', 'books', 'reviews', '$stateParams', function ($scope, books, reviews, $params) {
                                 $scope.currentBook = books.data[$params.bookId - 1];
                                 $scope.reviewsRecords = reviews.data;
@@ -31,7 +31,7 @@
                 url: '/list',
                 parent: 'reviews',
                 views: {
-                    'reviewsView': {
+                    'listView': {
                         templateUrl: basePath + 'reviews.list.html'
                     }
                 }
