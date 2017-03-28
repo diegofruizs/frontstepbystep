@@ -25,10 +25,15 @@
                     <hr>
                     <dt class="bold">Description</dt>
                     <dd>{{currentBook.description}}</dd>
-
                 </dl>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Reviews</a></li>
+                    <li role="presentation"><a href="#">Profile</a></li>
+                    <li role="presentation"><a href="#">Messages</a></li>
+                </ul>
             </div>
         </div>
     </div>
 </div>
+<div ui-view="childrenView"></div>
 

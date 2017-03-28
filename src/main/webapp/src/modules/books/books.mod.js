@@ -36,9 +36,7 @@
                     bookId: null
                 },
                 views: {
-                    'listView': {
-                        templateUrl: basePath + 'books.list.html'
-                    },
+                   
                     'detailView': {
                         templateUrl: basePath + 'books.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {

@@ -1,0 +1,17 @@
+<div class="container-fluid">   
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reviews</th>                      
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="review in reviewsRecords | filter:currentBook.name">
+                    <td id="{{$index}}-id">{{currentBook.name+": "+review.description}}</td>                                  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
