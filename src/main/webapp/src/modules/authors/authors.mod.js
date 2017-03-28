@@ -1,36 +1,61 @@
 (function (ng) {
-    // Definición del módulo
     var mod = ng.module("authorModule", ['ui.router']);
-
-    // Configuración de los estados del módulo
+    mod.constant("authorsContext", "api/authors");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            // En basePath se encuentran los templates y controladores de módulo
             var basePath = 'src/modules/authors/';
-            // Mostrar la lista de autores será el estado por defecto del módulo
+            var basePathBooks = 'src/modules/books/';
             $urlRouterProvider.otherwise("/authorsList");
-            // Definición del estado 'authorsList' donde se listan los autores
-            $stateProvider.state('authorsList', {
-                // Url que aparecerá en el browser
-                url: '/authors/list',
-                // Se define una variable authors (del estado) que toma por valor 
-                // la colección de autores que obtiene utilizando $http.get 
+
+            $stateProvider.state('authors', {
+                url: '/authors',
+                abstract: true,
                 resolve: {
                     authors: ['$http', function ($http) {
-                            return $http.get('data/authors.json'); // $http retorna un apromesa que aquí no se está manejando si viene con error.
+                            return $http.get('data/authors.json');
                         }]
                 },
                 views: {
                     'mainView': {
-                        // Template que se utilizara para ejecutar el estado
-                        templateUrl: basePath + 'authors.list.html',
-                        // El controlador guarda en el scope en la variable authorsRecords los datos que trajo el resolve
-                        // authorsRecords será visible en el template
+                        templateUrl: basePath + 'authors.html',
                         controller: ['$scope', 'authors', function ($scope, authors) {
                                 $scope.authorsRecords = authors.data;
                             }]
                     }
                 }
+            }).state('authorsList', {
+                url: '/list',
+                parent: 'authors',
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'authors.list.html'
+                    }
+                }
+            }).state('authorDetail', {
+                url: '/{authorId:int}/detail',
+                parent: 'authors',
+                param: {
+                    authorId: null
+                },
+                views: {
+                    'listView': {
+                        resolve: {
+                            books: ['$http', function ($http) {
+                                    return $http.get('data/books.json');
+                                }]
+                        },
+                        templateUrl: basePathBooks + 'books.list.html',
+                        controller: ['$scope', 'books', '$stateParams', function ($scope, books, $params) {
+                                $scope.booksRecords = books.data;
+                                $scope.currentAuthor = $scope.authorsRecords[$params.authorId - 1];
+                            }]
+                    },
+                    'detailView': {
+                        templateUrl: basePath + 'authors.detail.html',
+                        controller: ['$scope', '$stateParams', function ($scope, $params) {
+                                $scope.currentAuthor = $scope.authorsRecords[$params.authorId - 1];
+                            }]
+                    }
+                }
             });
-        }
-    ]);
+        }]);
 })(window.angular);
