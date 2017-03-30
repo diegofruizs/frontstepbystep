@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("reviewModule", ['ui.router']);
+    var mod = ng.module("reviewModule", ['bookModule', 'ui.router']);
     mod.constant("reviewsContext", "api/reviews");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/reviews/';
@@ -11,10 +11,7 @@
                 parent: 'bookDetail',
                 views: {
                     childrenView: {                       
-                        resolve: {
-                            books: ['$http', function ($http) {
-                                    return $http.get('data/books.json');
-                                }],
+                        resolve: {                            
                             reviews: ['$http', function ($http) {
                                     return $http.get('data/reviews.json');
                                 }]
