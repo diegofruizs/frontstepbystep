@@ -27,7 +27,7 @@
         </dependency>
      <dependency>
             <groupId>co.edu.uniandes.csw</groupId>
-            <artifactId>book-back</artifactId>
+            <artifactId>frontstepbystep-back</artifactId>
            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
