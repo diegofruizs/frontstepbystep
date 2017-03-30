@@ -7,11 +7,11 @@
     <class>co.edu.uniandes.csw.bookstore.entities.ReviewEntity</class>
     <class>co.edu.uniandes.csw.bookstore.entities.AuthorEntity</class>
     <class>co.edu.uniandes.csw.bookstore.entities.EditorialEntity</class>
-   
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
       <property name="eclipselink.cache.type.default" value="NONE"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>
