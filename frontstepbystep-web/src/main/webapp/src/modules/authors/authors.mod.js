@@ -46,8 +46,8 @@
                 views: {                
                     'detailView': {
                         templateUrl: basePath + 'authors.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentAuthor = $params.currentAuthor;
+                        controller: ['$scope', 'currentAuthor', function ($scope,currentAuthor) {
+                                $scope.currentAuthor = currentAuthor.data;
                             }]
                     }
                 }

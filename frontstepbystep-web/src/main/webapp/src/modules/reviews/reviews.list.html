@@ -3,12 +3,12 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Reviews</th>                      
+                    <th>{{currentBook.name}} Reviews </th>                      
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="review in reviewsRecords | filter:currentBook.name">
-                    <td id="{{$index}}-id">{{currentBook.name+": "+review.description}}</td>                                  
+                <tr ng-repeat="review in reviewsRecords ">
+                    <td id="{{$index}}-id">{{review.description}}</td>                                  
                 </tr>
             </tbody>
         </table>

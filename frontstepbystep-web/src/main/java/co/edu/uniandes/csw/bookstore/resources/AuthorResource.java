@@ -52,7 +52,7 @@ public class AuthorResource {
         if (entity == null) {
             throw new WebApplicationException("El author no existe", 404);
         }
-        return new AuthorDetailDTO();
+        return new AuthorDetailDTO(entity);
     }
 
     @POST

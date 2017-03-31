@@ -13,17 +13,16 @@
                 url: '/reviews',
                 abstract: true,
                 parent: 'bookDetail',
+                resolve: {
+                    reviews: ['$http', 'booksContext', 'reviewsContext', '$stateParams', function ($http, booksContext, reviewsContext, $params) {
+                            return $http.get(booksContext + '/' + $params.bookId + '/' + reviewsContext);
+                        }]
+                },
                 views: {
                     childrenView: {
-                        resolve: {
-                            reviews: ['$http', 'booksContext', 'reviewsContext', '$stateParams', function ($http, booksContext, reviewsContext, $params) {
-                                    return $http.get(booksContext + '/' + $params.bookId + '/' + reviewsContext);
-                                }]
-                        },
-                        templateUrl: basePath + 'reviews.html',
+                        templateUrl: basePath + 'reviews.html'
                     }
-                }
-
+                },
             }).state('reviewsList', {
                 url: '/list',
                 parent: 'reviews',
