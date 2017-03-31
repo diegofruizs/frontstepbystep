@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.bookstore.dtos;
 
 import co.edu.uniandes.csw.bookstore.entities.AuthorEntity;
-import co.edu.uniandes.csw.bookstore.entities.BookEntity;
 import java.util.Date;
 
 /**
@@ -19,6 +18,8 @@ public class AuthorDTO {
     private Long id;
     private String name;
     private Date birthDate;
+    private String description;
+    private String image;
 
     /**
      * Constructor por defecto
@@ -26,27 +27,25 @@ public class AuthorDTO {
     public AuthorDTO() {
     }
 
-    /**
-     * Constructor con parámetros.
-     *
-     * @param id identificador de la book
-     * @param name nombre de la book
-     */
+   
     public AuthorDTO(AuthorEntity authorE) {
         this.id = authorE.getId();
         this.name = authorE.getName();
         this.birthDate = authorE.getBirthDate();
+        this.description = authorE.getDescription();
+        this.image = authorE.getImage();
     }
 
     public AuthorEntity toEntity() {
         AuthorEntity authorE = new AuthorEntity();
         authorE.setId(this.id);
         authorE.setName(this.name);
-         authorE.setBirthDate(this.birthDate);
+        authorE.setBirthDate(this.birthDate);
+        authorE.setDescription(this.description);
+        authorE.setImage(this.image);
         return authorE;
     }
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -86,5 +85,18 @@ public class AuthorDTO {
         this.birthDate = birthDate;
     }
 
-   
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
 }

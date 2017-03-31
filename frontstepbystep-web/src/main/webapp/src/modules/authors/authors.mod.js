@@ -1,17 +1,19 @@
 (function (ng) {
     var mod = ng.module("authorModule", ['ui.router']);
+ 
     mod.constant("authorsContext", "api/authors");
+    
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/authors/';
-            var basePathBooks = 'src/modules/books/';
+         
             $urlRouterProvider.otherwise("/authorsList");
 
             $stateProvider.state('authors', {
                 url: '/authors',
                 abstract: true,
                 resolve: {
-                    authors: ['$http', function ($http) {
-                            return $http.get('data/authors.json');
+                    authors: ['$http', 'authorsContext', function ($http, authorsContext) {
+                            return $http.get(authorsContext);
                         }]
                 },
                 views: {
@@ -36,23 +38,16 @@
                 param: {
                     authorId: null
                 },
-                views: {
-                    'listView': {
-                        resolve: {
-                            books: ['$http', function ($http) {
-                                    return $http.get('data/books.json');
-                                }]
-                        },
-                        templateUrl: basePathBooks + 'books.list.html',
-                        controller: ['$scope', 'books', '$stateParams', function ($scope, books, $params) {
-                                $scope.booksRecords = books.data;
-                                $scope.currentAuthor = $scope.authorsRecords[$params.authorId - 1];
-                            }]
-                    },
+                resolve: {
+                    currentAuthor: ['$http', 'authorsContext', '$stateParams', function ($http, authorsContext, $params) {
+                            return $http.get(authorsContext + '/' + $params.authorId);
+                        }]
+                },
+                views: {                
                     'detailView': {
                         templateUrl: basePath + 'authors.detail.html',
                         controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentAuthor = $scope.authorsRecords[$params.authorId - 1];
+                                $scope.currentAuthor = $params.currentAuthor;
                             }]
                     }
                 }

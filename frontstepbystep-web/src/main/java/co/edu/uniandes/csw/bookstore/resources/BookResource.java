@@ -5,10 +5,8 @@
  */
 package co.edu.uniandes.csw.bookstore.resources;
 
-import co.edu.uniandes.csw.bookstore.dtos.AuthorDetailDTO;
 import co.edu.uniandes.csw.bookstore.ejb.BookLogic;
 import co.edu.uniandes.csw.bookstore.dtos.BookDetailDTO;
-import co.edu.uniandes.csw.bookstore.entities.AuthorEntity;
 import co.edu.uniandes.csw.bookstore.entities.BookEntity;
 import co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -74,8 +72,8 @@ public class BookResource {
     }
 
     @DELETE
-    @Path("{id: \\d+}")
-    public void deleteBook(@PathParam("id") Long id) throws BusinessLogicException {
+    @Path("{booksId: \\d+}")
+    public void deleteBook(@PathParam("booksId") Long id) throws BusinessLogicException {
         BookEntity entity = bookLogic.getBook(id);
         if (entity == null) {
             throw new WebApplicationException("El libro no existe", 404);
@@ -93,15 +91,7 @@ public class BookResource {
         return new AuthorBookResource();
     }
 
-    
-    @Path("books/{idBook: \\d+}/reviews")
-    public ReviewResource getReviewResource(@PathParam("booksId") Long booksId) {
-         BookEntity entity = bookLogic.getBook(booksId);
-        if (entity == null) {
-            throw new WebApplicationException("El libro no existe", 404);
-        }
-        return new ReviewResource();
-    }
+  
   
     
     private List<BookDetailDTO> listBookEntity2DetailDTO(List<BookEntity> entityList) {

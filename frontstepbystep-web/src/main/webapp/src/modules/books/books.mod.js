@@ -35,12 +35,16 @@
                 param: {
                     bookId: null
                 },
+                resolve:  {
+                    currentBook: ['$http', 'booksContext', '$stateParams', function ($http, booksContext, $params) {
+                            return $http.get(booksContext+'/'+$params.bookId);
+                        }]
+                },
                 views: {
-
                     'detailView': {
                         templateUrl: basePath + 'books.detail.html',
-                        controller: ['$scope', '$stateParams', function ($scope, $params) {
-                                $scope.currentBook = $scope.booksRecords[$params.bookId - 1];
+                        controller: ['$scope', 'currentBook', function ($scope,  currentBook) {
+                                $scope.currentBook = currentBook.data;
                             }]
                     }
 

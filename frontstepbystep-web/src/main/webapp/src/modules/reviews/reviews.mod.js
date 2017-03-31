@@ -1,6 +1,10 @@
 (function (ng) {
     var mod = ng.module("reviewModule", ['bookModule', 'ui.router']);
-    mod.constant("reviewsContext", "api/reviews");
+
+    mod.constant("booksContext", "api/books");
+
+    mod.constant("reviewsContext", "reviews");
+
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/reviews/';
             $urlRouterProvider.otherwise("/reviewsList");
@@ -10,17 +14,13 @@
                 abstract: true,
                 parent: 'bookDetail',
                 views: {
-                    childrenView: {                       
-                        resolve: {                            
-                            reviews: ['$http', function ($http) {
-                                    return $http.get('data/reviews.json');
+                    childrenView: {
+                        resolve: {
+                            reviews: ['$http', 'booksContext', 'reviewsContext', '$stateParams', function ($http, booksContext, reviewsContext, $params) {
+                                    return $http.get(booksContext + '/' + $params.bookId + '/' + reviewsContext);
                                 }]
                         },
                         templateUrl: basePath + 'reviews.html',
-                        controller: ['$scope', 'books', 'reviews', '$stateParams', function ($scope, books, reviews, $params) {
-                                $scope.currentBook = books.data[$params.bookId - 1];
-                                $scope.reviewsRecords = reviews.data;
-                            }]
                     }
                 }
 
@@ -29,7 +29,10 @@
                 parent: 'reviews',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'reviews.list.html'
+                        templateUrl: basePath + 'reviews.list.html',
+                        controller: ['$scope', 'reviews', function ($scope, reviews) {
+                                $scope.reviewsRecords = reviews.data;
+                            }]
                     }
                 }
             });

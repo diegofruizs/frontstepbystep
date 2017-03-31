@@ -8,8 +8,8 @@
     <packaging>pom</packaging>
     
     <modules>
-        <module>frontstepbystep-web</module>
         <module>frontstepbystep-back</module>
+        <module>frontstepbystep-web</module>
     </modules>
 	
     <properties>

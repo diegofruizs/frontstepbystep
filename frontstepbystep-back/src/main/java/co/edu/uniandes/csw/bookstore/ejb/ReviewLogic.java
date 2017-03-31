@@ -24,22 +24,23 @@ import co.edu.uniandes.csw.bookstore.entities.ReviewEntity;
 import co.edu.uniandes.csw.bookstore.persistence.ReviewPersistence;
 
 import co.edu.uniandes.csw.bookstore.entities.BookEntity;
+import co.edu.uniandes.csw.bookstore.persistence.BookPersistence;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 
-/**
- * @generated
- */
+
 @Stateless
 public class ReviewLogic {
 
+    private static final Logger logger = Logger.getLogger(ReviewLogic.class.getName());
     @Inject
     private ReviewPersistence persistence;
 
     @Inject
-    private BookLogic bookLogic;
+    private BookPersistence bookPersistence;
 
     /**
      * Obtiene la lista de los registros de Review que pertenecen a un Book.
@@ -49,9 +50,15 @@ public class ReviewLogic {
      * @generated
      */
     public List<ReviewEntity> getReviews(Long bookid) {
-        BookEntity book = bookLogic.getBook(bookid);
-        return book.getReviews();
+        logger.info("En ReviewLogic getReviews "+bookid);
+        BookEntity book = bookPersistence.find(bookid);
+        if (book != null) {
+            return book.getReviews();
+        } else {
+            return null;
+        }
     }
+
     /**
      * Obtiene los datos de una instancia de Review a partir de su ID.
      *
@@ -77,7 +84,7 @@ public class ReviewLogic {
      * @generated
      */
     public ReviewEntity createReview(Long bookid, ReviewEntity entity) {
-     
+
         return entity;
     }
 
@@ -90,7 +97,7 @@ public class ReviewLogic {
      * @generated
      */
     public ReviewEntity updateReview(Long bookid, Long reviewid, ReviewEntity entity) {
-       
+
         return persistence.update(entity);
     }
 

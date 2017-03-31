@@ -9,8 +9,8 @@
                 url: '/editorials',
                 abstract: true,
                 resolve: {
-                    editorials: ['$http', function ($http) {
-                            return $http.get('data/editorials.json');
+                    editorials: ['$http', 'editorialsContext', function ($http, editorialsContext) {
+                            return $http.get(editorialsContext);
                         }]
                 },
                 views: {
