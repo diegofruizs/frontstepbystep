@@ -18,6 +18,13 @@
                 <hr>
                 <dt>Bio</dt>
                 <dd>{{currentAuthor.description}}</dd>
+                
+                <hr>
+                <dt>Awards</dt>
+                <dd ng-repeat="award in currentAuthor.awards">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    <a ui-sref="awardDetail({awardId: award.id})" class="thumb">{{award.name}}</a>
+                </dd>
 
             </dl>
         </div>

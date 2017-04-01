@@ -39,3 +39,7 @@ and open the template in the editor.
     font-variant: small-caps;
     font-weight: bold;
 }
+
+.glyphicon.glyphicon-star {
+    font-size: 75px;
+}
