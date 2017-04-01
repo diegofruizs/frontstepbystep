@@ -1,11 +1,11 @@
 (function (ng) {
     var mod = ng.module("authorModule", ['ui.router']);
- 
+
     mod.constant("authorsContext", "api/authors");
-    
+
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/authors/';
-         
+            var baseBookPath = 'src/modules/books/';
             $urlRouterProvider.otherwise("/authorsList");
 
             $stateProvider.state('authors', {
@@ -22,6 +22,9 @@
                         controller: ['$scope', 'authors', function ($scope, authors) {
                                 $scope.authorsRecords = authors.data;
                             }]
+                    },
+                    'childrenView': {
+                        templateUrl: basePath + 'authors.html'
                     }
                 }
             }).state('authorsList', {
@@ -43,11 +46,17 @@
                             return $http.get(authorsContext + '/' + $params.authorId);
                         }]
                 },
-                views: {                
+                views: {
                     'detailView': {
                         templateUrl: basePath + 'authors.detail.html',
-                        controller: ['$scope', 'currentAuthor', function ($scope,currentAuthor) {
+                        controller: ['$scope', 'currentAuthor', function ($scope, currentAuthor) {
                                 $scope.currentAuthor = currentAuthor.data;
+                            }]
+                    },
+                    'listView': {
+                        templateUrl: baseBookPath + 'books.list.html',
+                        controller: ['$scope', 'currentAuthor', function ($scope, currentAuthor) {
+                                $scope.booksRecords = currentAuthor.data.books;
                             }]
                     }
                 }

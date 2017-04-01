@@ -19,7 +19,7 @@
                         }]
                 },
                 views: {
-                    childrenView: {
+                    'childrenView': {
                         templateUrl: basePath + 'reviews.html'
                     }
                 },

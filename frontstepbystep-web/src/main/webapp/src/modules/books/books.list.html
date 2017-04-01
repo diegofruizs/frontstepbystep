@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2" ng-repeat="book in booksRecords | filter:currentAuthor.name">
+        <div class="col-sm-2" ng-repeat="book in booksRecords">
             <div class="thumbnail">
                 <a ui-sref="bookDetail({bookId: book.id})">                    
                     <img class="img-responsive" ng-src='{{book.image}}' alt="{{book.name}}" />                  
