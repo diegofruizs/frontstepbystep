@@ -36,9 +36,7 @@ public class BookEntity extends BaseEntity implements Serializable {
     @PodamExclude
     private List<ReviewEntity> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    @PodamExclude
-    private List<PrizeEntity> prizes = new ArrayList<>();
+   
 
     /**
      * @return the isbn
@@ -120,39 +118,6 @@ public class BookEntity extends BaseEntity implements Serializable {
         this.reviews = reviews;
     }
 
-    /**
-     * @return the prizes
-     */
-    public List<PrizeEntity> getPrizes() {
-        return prizes;
-    }
-
-    /**
-     * @param prizes the prizes to set
-     */
-    public void setPrizes(List<PrizeEntity> prizes) {
-        this.prizes = prizes;
-    }
-
-    /**
-     * @return the prizes
-     */
-    public PrizeEntity getPrize(Long prizeId) {
-        List<PrizeEntity> prizes = getPrizes();
-        Iterator<PrizeEntity> i = prizes.iterator();
-        boolean find = false;
-        while (i.hasNext() && !find) {
-            if (i.next().getId() == prizeId) {
-                find = true;
-            } else {
-                find = false;
-            }
-        }
-        if (find) {
-            return i.next();
-        } else {
-            return null;
-        }
-    }
+    
 }
 

@@ -6,7 +6,8 @@
         'bookModule',
         'authorModule',
         'editorialModule',
-         'reviewModule'
+        'reviewModule',
+        'awardModule'
 
     ]);
     // Resuelve problemas de las promesas

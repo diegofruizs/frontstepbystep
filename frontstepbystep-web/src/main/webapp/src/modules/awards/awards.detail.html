@@ -1,0 +1,30 @@
+<div class="panel panel-default"> 
+    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumb">
+                <img class="img-responsive" ng-src="http://2016.flcadet.com/resources/site1/General/Graphics-Website/gold-trophy.jpg"/>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <dl>     
+                <dt>{{currentAward.name}}</dt>
+                
+                <hr>
+                <dt>Author</dt>
+                <dd> <a ui-sref="authorDetail({authorId: currentAward.author.id})" class="thumb">{{currentAward.author.name}}</a></dd>
+          
+                <hr>
+                <dt>Year</dt>
+                <dd>{{currentAward.year|date:'yyyy-MM-dd'}}</dd>
+                
+                <hr>
+                <dt>Description</dt>
+                <dd>{{currentAward.description}}</dd>
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>
+
+

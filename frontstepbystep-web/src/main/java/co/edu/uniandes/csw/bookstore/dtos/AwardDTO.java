@@ -1,46 +1,47 @@
 package co.edu.uniandes.csw.bookstore.dtos;
 
-import co.edu.uniandes.csw.bookstore.entities.ReviewEntity;
+import co.edu.uniandes.csw.bookstore.entities.AwardEntity;
+import co.edu.uniandes.csw.bookstore.entities.AwardEntity;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class ReviewDTO {
+public class AwardDTO {
 
     private Long id;
 
     private String name;
 
-    private String source;
-
+   private Date awardyear;
     private String description;
 
-    private BookDTO book;
+    private AuthorDTO author;
 
     /**
      * Constructor por defecto
      */
-    public ReviewDTO() {
+    public AwardDTO() {
     }
 
-    public ReviewDTO(ReviewEntity entity) {
+    public AwardDTO(AwardEntity entity) {
 
         this.id = entity.getId();
         this.name = entity.getName();
-        this.source = entity.getSource();
+        this.awardyear = entity.getAwardyear();
         this.description = entity.getDescription();
-        this.book = new BookDTO(entity.getBook());
+             this.author= new AuthorDTO(entity.getAuthor());
     }
 
-    public ReviewEntity toEntity() {
-        ReviewEntity entity = new ReviewEntity();
-        entity.setId(this.id);
-        entity.setName(this.name);
-        entity.setSource(this.source);
-        entity.setDescription(this.description);
-        if (this.getBook() != null) {
-            entity.setBook(this.getBook().toEntity());
+    public AwardEntity toEntity() {
+        AwardEntity entity = new AwardEntity();
+        entity.setId(this.getId());
+        entity.setName(this.getName());
+        entity.setAwardyear(this.awardyear);
+        entity.setDescription(this.getDescription());
+          if (this.author != null) {
+            entity.setAuthor(this.author.toEntity());               
         } else {
-            entity.setBook(null);
+            entity.setAuthor(null);
         }
         return entity;
     }
@@ -74,17 +75,17 @@ public class ReviewDTO {
     }
 
     /**
-     * @return the source
+     * @return the awardyear
      */
-    public String getSource() {
-        return source;
+    public Date getAwardyear() {
+        return awardyear;
     }
 
     /**
-     * @param source the source to set
+     * @param awardyear the awardyear to set
      */
-    public void setSource(String source) {
-        this.source = source;
+    public void setAwardyear(Date awardyear) {
+        this.awardyear = awardyear;
     }
 
     /**
@@ -101,18 +102,20 @@ public class ReviewDTO {
         this.description = description;
     }
 
+    
+
     /**
-     * @return the book
+     * @return the author
      */
-    public BookDTO getBook() {
-        return book;
+    public AuthorDTO getAuthor() {
+        return author;
     }
 
     /**
-     * @param book the book to set
+     * @param author the author to set
      */
-    public void setBook(BookDTO book) {
-        this.book = book;
+    public void setAuthor(AuthorDTO author) {
+        this.author = author;
     }
 
 }

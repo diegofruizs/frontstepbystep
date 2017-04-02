@@ -13,13 +13,22 @@
 
                     <hr>
                     <dt>Birth Date</dt>
-                    <dd>{{currentAuthor.birthDate}}</dd>
+                    <dd>{{currentAuthor.birthDate|date:'yyyy-MM-dd'}}</dd>
 
                     <hr>
                     <dt>Bio</dt>
                     <dd>{{currentAuthor.description}}</dd>
+                    <hr>
+                    <dt>Awards</dt>
+                    <dd ng-repeat="award in currentAuthor.awards">
+                        <span class="span4 glyphicon glyphicon-star-empty"></span>
+                            {{award.awardyear|date:'yyyy'}}: {{award.name}}
+                    </dd>
 
                 </dl>
+            </div>
+            <div class="col-md-3">
+               
             </div>
         </div>
     </div>

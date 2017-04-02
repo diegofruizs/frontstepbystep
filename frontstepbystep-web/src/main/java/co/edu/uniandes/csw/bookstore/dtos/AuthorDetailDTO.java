@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.bookstore.dtos;
 
 import co.edu.uniandes.csw.bookstore.entities.AuthorEntity;
+import co.edu.uniandes.csw.bookstore.entities.AwardEntity;
 import co.edu.uniandes.csw.bookstore.entities.BookEntity;
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 public class AuthorDetailDTO extends AuthorDTO {
 
     private List<BookDTO> books;
+    private List<AwardDTO> awards;
 
     /**
      * Constructor por defecto
@@ -28,9 +30,13 @@ public class AuthorDetailDTO extends AuthorDTO {
             for (BookEntity entityBooks : entity.getBooks()) {
                 books.add(new BookDTO(entityBooks));
             }
-
+            awards = new ArrayList<>();
+            for (AwardEntity entityAwards : entity.getAwards()) {
+                awards.add(new AwardDTO(entityAwards));
+            }
         }
     }
+
     /**
      * Transformar un DTO a un Entity
      *
@@ -43,6 +49,14 @@ public class AuthorDetailDTO extends AuthorDTO {
                 booksEntity.add(dtoBook.toEntity());
             }
             authorE.setBooks(booksEntity);
+        }
+
+        if (awards != null) {
+            List<AwardEntity> awardsEntity = new ArrayList<>();
+            for (AwardDTO dtoAward : awards) {
+                awardsEntity.add(dtoAward.toEntity());
+            }
+            authorE.setAwards(awardsEntity);
         }
         return authorE;
     }
@@ -59,6 +73,20 @@ public class AuthorDetailDTO extends AuthorDTO {
      */
     public void setBooks(List<BookDTO> books) {
         this.books = books;
+    }
+
+    /**
+     * @return the awards
+     */
+    public List<AwardDTO> getAwards() {
+        return awards;
+    }
+
+    /**
+     * @param awards the awards to set
+     */
+    public void setAwards(List<AwardDTO> awards) {
+        this.awards = awards;
     }
 
 }

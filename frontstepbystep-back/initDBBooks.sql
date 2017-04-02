@@ -1,7 +1,8 @@
 delete from ReviewEntity;
+delete from AwardEntity;
 delete from BookEntity_AuthorEntity;
 delete from AuthorEntity;
-delete from  BookEntity;
+delete from BookEntity;
 delete from EditorialEntity;
 
 
@@ -32,3 +33,12 @@ insert into ReviewEntity  (id, name,  description, source, book_id) values (100,
 insert into ReviewEntity  (id, name,  description, source, book_id) values (200, ' ','The trilogy is worth reading once. For readers who like fast paced action , this is not a series I would recommend. It progresses quite slowly and the descriptions are lengthy - not really my type. But if you have the patience, the plot is worth it.', ' ', 100);
 insert into ReviewEntity  (id, name,  description, source, book_id) values (300,' ','This isnt really like other books, even its imitators, though the best of them are similarly long, variable in pace and diverse in language and location. The early part of the story was meant to be a follow-up to The Hobbit, u ',' ', 200);
 insert into ReviewEntity  (id, name,  description, source, book_id) values (400,' ', 'The trilogy is worth reading once. For readers who like fast paced action , this is not a series I would recommend. It progresses quite slowly and the descriptions are lengthy - not really my type. But if you have the patience, the plot is worth it.',' ', 300);
+
+
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values (100, 'Nestle Smarties Book Award', 'Gold Award for Harry Potter and the Philosophers Stone','4/7/1997', 100);
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values (200,'British books awards','Author of the year','4/7/2000',100);
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values (300,'Writers of the Future','Promising ...','4/7/2002',400);
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values ( 400,'British book of the year','Winner for Harry Potter and the Half Blood Prince','4/7/2006', 100);
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values (500,'Premio ignotus','Best Foreign Novel for A Storm of Swords','4/7/2006',300);
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values (600,'Locus Award','Best Fantasy Novel for A dance with dragons','4/7/2012',300);
+insert into AwardEntity  (id, name,  description, awardyear, author_id) values (700,'Locus Award','Best Fantasy Novel for the silmarillon','4/7/2012',200);
