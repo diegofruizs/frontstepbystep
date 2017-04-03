@@ -8,15 +8,10 @@
         </div>
         <div class="col-md-3">
             <dl>     
-                <dt>{{currentAward.name}}</dt>
-                
-                <hr>
-                <dt>Author</dt>
-                <dd> <a ui-sref="authorDetail({authorId: currentAward.author.id})" class="thumb">{{currentAward.author.name}}</a></dd>
-          
-                <hr>
+                <dt>{{currentAward.name}}</dt>                
+                <hr>           
                 <dt>Year</dt>
-                <dd>{{currentAward.year|date:'yyyy-MM-dd'}}</dd>
+                <dd>{{currentAward.awardyear|date:'yyyy'}}</dd>
                 
                 <hr>
                 <dt>Description</dt>

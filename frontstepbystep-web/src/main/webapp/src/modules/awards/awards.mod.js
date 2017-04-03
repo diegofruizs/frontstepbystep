@@ -13,24 +13,38 @@
                 url: '/awards',
                 abstract: true,
                 parent: 'authorDetail',
-                resolve: {
-                    awards: ['$http', 'authorsContext', 'awardsContext', '$stateParams', function ($http, authorsContext, awardsContext, $params) {
-                            return $http.get(authorsContext + '/' + $params.authorId + '/' + awardsContext);
-                        }]
-                },
                 views: {
                     'childrenView': {
-                        templateUrl: basePath + 'awards.html'
+                        templateUrl: basePath + 'awards.html',
+                        controller: ['$scope', function ($scope) {
+                                $scope.awardsRecords = $scope.currentAuthor.awards;
+                            }]
                     }
-                },
+                }
             }).state('awardsList', {
                 url: '/list',
                 parent: 'awards',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'awards.list.html',
-                        controller: ['$scope', 'awards', function ($scope, awards) {
-                                $scope.awardsRecords = awards.data;
+                        templateUrl: basePath + 'awards.list.html'
+                    }
+                }
+            }).state('awardDetail', {
+                url: '/{awardId:int}/detail',
+                parent: 'awards',
+                param: {
+                    awardId: null
+                },
+                views: {
+                    'listView': {
+                        templateUrl: basePath + 'awards.detail.html',
+                        controller: ['$scope', '$stateParams', '$filter', function ($scope, $params, $filter) {
+                                var found = $filter('filter')( $scope.awardsRecords, {id: $params.awardId}, true);
+                                if (found.length) {
+                                    $scope.currentAward = found[0];
+                                } else {
+                                    $scope.currentAward = '';
+                                }
                             }]
                     }
                 }

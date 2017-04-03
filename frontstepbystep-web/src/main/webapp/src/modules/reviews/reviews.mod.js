@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("reviewModule", ['bookModule', 'ui.router']);
+    var mod = ng.module("reviewModule", ['ui.router']);
 
     mod.constant("booksContext", "api/books");
 

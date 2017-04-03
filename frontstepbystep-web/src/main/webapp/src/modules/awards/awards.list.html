@@ -1,11 +1,12 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2" ng-repeat="award in awardsRecords |orderBy:'year'">
+        <div class="col-sm-2" ng-repeat="award in awardsRecords|orderBy:'year'">
             <div class="thumbnail">
                 <div class="caption text-center">
-                    <p><a ui-sref="awardDetail({awardId: award.id})" class="thumb"><span class="glyphicon glyphicon-star"></span></a></p>
-                    <p>{{award.name}}</p>
-                    <p><a ui-sref="authorDetail({authorId: award.author.id})" class="thumb">{{award.author.name}}</a></p>
+                    <p><span class="glyphicon glyphicon-star"></span></p>
+
+                    <p><a ui-sref="awardDetail({awardId: award.id})" class="thumb">{{award.name}}</a></p>
+                    <p>{{award.author.name}}</p>
                     <p>{{award.year}}</p>
                 </div>
             </div>
