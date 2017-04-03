@@ -21,6 +21,7 @@
                         templateUrl: basePath + 'authors.html',
                         controller: ['$scope', 'authors', function ($scope, authors) {
                                 $scope.authorsRecords = authors.data;
+                                 $scope.level = 'authors';
                             }]
                     },
                     'childrenView': {
@@ -51,6 +52,7 @@
                         templateUrl: basePath + 'authors.detail.html',
                         controller: ['$scope', 'currentAuthor', function ($scope, currentAuthor) {
                                 $scope.currentAuthor = currentAuthor.data;
+                                $scope.level = 'authorDetails';
                             }]
                     },
                     'listView': {

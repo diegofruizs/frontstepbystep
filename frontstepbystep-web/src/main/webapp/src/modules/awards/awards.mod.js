@@ -1,5 +1,5 @@
 (function (ng) {
-    var mod = ng.module("awardModule", ['authorModule', 'ui.router']);
+    var mod = ng.module("awardModule", ['ui.router']);
 
     mod.constant("authorsContext", "api/authors");
 
@@ -12,21 +12,17 @@
             $stateProvider.state('awards', {
                 url: '/awards',
                 abstract: true,
-                parent: 'authorDetail',
-                views: {
-                    'childrenView': {
-                        templateUrl: basePath + 'awards.html',
-                        controller: ['$scope', function ($scope) {
-                                $scope.awardsRecords = $scope.currentAuthor.awards;
-                            }]
-                    }
-                }
+                parent: 'authorDetail'
+              
             }).state('awardsList', {
                 url: '/list',
                 parent: 'awards',
                 views: {
-                    'listView': {
-                        templateUrl: basePath + 'awards.list.html'
+                    'listView@authors': {
+                        templateUrl: basePath + 'awards.list.html',
+                        controller: ['$scope', 'currentAuthor',function ($scope,currentAuthor) {
+                                $scope.awardsRecords = currentAuthor.data.awards;
+                            }]
                     }
                 }
             }).state('awardDetail', {
@@ -36,15 +32,22 @@
                     awardId: null
                 },
                 views: {
-                    'listView': {
+                    'childrenView@authorDetail': {
                         templateUrl: basePath + 'awards.detail.html',
-                        controller: ['$scope', '$stateParams', '$filter', function ($scope, $params, $filter) {
-                                var found = $filter('filter')( $scope.awardsRecords, {id: $params.awardId}, true);
+                        controller: ['$scope', '$stateParams', '$filter', 'currentAuthor', function ($scope, $params, $filter,currentAuthor) {
+                               $scope.awardsRecords = currentAuthor.data.awards;
+                               var found = $filter('filter')( $scope.awardsRecords, {id: $params.awardId}, true);
                                 if (found.length) {
                                     $scope.currentAward = found[0];
                                 } else {
                                     $scope.currentAward = '';
                                 }
+                            }]
+                    },
+                    'listView@authors': {
+                        templateUrl: basePath + 'awards.list.html',
+                        controller: ['$scope', 'currentAuthor',function ($scope,currentAuthor) {
+                                $scope.awardsRecords = currentAuthor.data.awards;
                             }]
                     }
                 }
