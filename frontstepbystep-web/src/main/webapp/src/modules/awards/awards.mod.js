@@ -1,8 +1,7 @@
 (function (ng) {
     var mod = ng.module("awardModule", ['authorModule', 'ui.router']);
 
-    mod.constant("authorsContext", "api/authors");
-
+ 
     mod.constant("awardsContext", "awards");
 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
