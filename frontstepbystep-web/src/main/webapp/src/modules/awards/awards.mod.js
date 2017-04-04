@@ -13,16 +13,12 @@
                 url: '/awards',
                 abstract: true,
                 parent: 'authorDetail',
-                views: {
-                    'childrenView': {
-                        templateUrl: basePath + 'awards.html'
-                    }
-                }
+                
             }).state('awardsList', {
                 url: '/list',
                 parent: 'awards',
                 views: {
-                    'listView': {
+                    'listView@authors': {
                         templateUrl: basePath + 'awards.list.html',
                         controller: ['$scope', 'currentAuthor',function ($scope,currentAuthor) {
                                 $scope.awardsRecords = currentAuthor.data.awards;
@@ -36,7 +32,7 @@
                     awardId: null
                 },
                 views: {
-                    'detailView': {
+                    'detailView@authors': {
                         templateUrl: basePath + 'awards.detail.html',
                         controller: ['$scope', '$stateParams', '$filter', 'currentAuthor', function ($scope, $params, $filter,currentAuthor) {
                                $scope.awardsRecords = currentAuthor.data.awards;
@@ -48,7 +44,7 @@
                                 }
                             }]
                     },
-                    'listView': {
+                    'listView@authors': {
                         templateUrl: basePath + 'awards.list.html',
                         controller: ['$scope', 'currentAuthor',function ($scope,currentAuthor) {
                                 $scope.awardsRecords = currentAuthor.data.awards;
