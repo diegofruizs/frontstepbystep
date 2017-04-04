@@ -11,9 +11,10 @@
             <tbody>
                 <tr ng-repeat="author in authorsRecords">
                     <td id="{{$index}}-name">   <a ui-sref="authorDetail({authorId: author.id})">{{author.name}}</a></td>
-                    <td id="{{$index}}-descrption">{{author.birthDate}}</td>                   
+                    <td id="{{$index}}-descrption">{{author.birthDate|date:'yyyy-MM-dd'}}</td>                   
                 </tr>
             </tbody>
         </table>
     </div>
+    <a href="authors.list.html"></a>
 </div>

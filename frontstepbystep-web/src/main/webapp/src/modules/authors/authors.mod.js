@@ -18,13 +18,6 @@
                 },
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'authors.html',
-                        controller: ['$scope', 'authors', function ($scope, authors) {
-                                $scope.authorsRecords = authors.data;
-                                 $scope.level = 'authors';
-                            }]
-                    },
-                    'childrenView': {
                         templateUrl: basePath + 'authors.html'
                     }
                 }
@@ -33,7 +26,11 @@
                 parent: 'authors',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'authors.list.html'
+                        templateUrl: basePath + 'authors.list.html',
+                        controller: ['$scope', 'authors', function ($scope, authors) {
+                                $scope.authorsRecords = authors.data;
+
+                            }]
                     }
                 }
             }).state('authorDetail', {
@@ -51,8 +48,7 @@
                     'detailView': {
                         templateUrl: basePath + 'authors.detail.html',
                         controller: ['$scope', 'currentAuthor', function ($scope, currentAuthor) {
-                                $scope.currentAuthor = currentAuthor.data;
-                                $scope.level = 'authorDetails';
+                                $scope.currentAuthor = currentAuthor.data;                               
                             }]
                     },
                     'listView': {

@@ -12,13 +12,17 @@
             $stateProvider.state('awards', {
                 url: '/awards',
                 abstract: true,
-                parent: 'authorDetail'
-              
+                parent: 'authorDetail',
+                views: {
+                    'childrenView': {
+                        templateUrl: basePath + 'awards.html'
+                    }
+                }
             }).state('awardsList', {
                 url: '/list',
                 parent: 'awards',
                 views: {
-                    'listView@authors': {
+                    'listView': {
                         templateUrl: basePath + 'awards.list.html',
                         controller: ['$scope', 'currentAuthor',function ($scope,currentAuthor) {
                                 $scope.awardsRecords = currentAuthor.data.awards;
@@ -32,7 +36,7 @@
                     awardId: null
                 },
                 views: {
-                    'childrenView@authorDetail': {
+                    'detailView': {
                         templateUrl: basePath + 'awards.detail.html',
                         controller: ['$scope', '$stateParams', '$filter', 'currentAuthor', function ($scope, $params, $filter,currentAuthor) {
                                $scope.awardsRecords = currentAuthor.data.awards;
@@ -44,7 +48,7 @@
                                 }
                             }]
                     },
-                    'listView@authors': {
+                    'listView': {
                         templateUrl: basePath + 'awards.list.html',
                         controller: ['$scope', 'currentAuthor',function ($scope,currentAuthor) {
                                 $scope.awardsRecords = currentAuthor.data.awards;
