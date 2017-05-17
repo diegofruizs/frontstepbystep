@@ -27,7 +27,7 @@
                     <dd>{{currentBook.description}}</dd>
                 </dl>
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Reviews</a></li>                   
+                    <li role="presentation" ng-if="isRol('general')" class="active"> <a ui-sref="reviewsList({bookId: currentBook.id})">Reviews</a></li>                   
                 </ul>
                 
             </div>

@@ -43,8 +43,12 @@
                 views: {
                     'detailView': {
                         templateUrl: basePath + 'books.detail.html',
-                        controller: ['$scope', 'currentBook', function ($scope,  currentBook) {
+                        controller: ['$scope', 'currentBook', 'userService', function ($scope, currentBook, userService) {
                                 $scope.currentBook = currentBook.data;
+                                $scope.isRol = function(rol){
+                                  return (userService.getRoles().indexOf(rol) > -1);
+                                };
+                                
                             }]
                     }
 
