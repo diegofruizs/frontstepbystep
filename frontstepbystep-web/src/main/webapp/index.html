@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html ng-app="mainApp">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>books</title>
-        <!-- stylesheet Externas -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <!-- stylesheet Internas -->
-        <link rel="stylesheet" href="css/app.css" />
-        <!-- Dependencias Externas -->
-         <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>books</title>
+    <!-- stylesheet Externas -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- stylesheet Internas -->
+    <link rel="stylesheet" href="css/app.css" />
+    <!-- Dependencias Externas -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-        <!-- Books -->
-        <script src="src/modules/books/books.mod.js" type="text/javascript"></script>
-        <!-- Authors -->
-        <script src="src/modules/authors/authors.mod.js" type="text/javascript"></script>
-        <!-- Editorials -->
-        <script src="src/modules/editorials/editorials.mod.js" type="text/javascript"></script>
-         <!-- Reviews-->
-        <script src="src/modules/reviews/reviews.mod.js" type="text/javascript"></script>
-            <!-- Awards-->
-        <script src="src/modules/awards/awards.mod.js" type="text/javascript"></script>
+    <!-- Books -->
+    <script src="src/modules/books/books.mod.js" type="text/javascript"></script>
+    <!-- Authors -->
+    <script src="src/modules/authors/authors.mod.js" type="text/javascript"></script>
+    <!-- Editorials -->
+    <script src="src/modules/editorials/editorials.mod.js" type="text/javascript"></script>
+    <!-- Reviews-->
+    <script src="src/modules/reviews/reviews.mod.js" type="text/javascript"></script>
+    <!-- Awards-->
+    <script src="src/modules/awards/awards.mod.js" type="text/javascript"></script>
 
 
-        <script src="src/app.js" type="text/javascript"></script> 
+    <script src="src/app.js" type="text/javascript"></script> 
+    <script src="src/http-interceptor.factory.js" type="text/javascript"></script> 
 
-    </head>
-    <body class="span4">
-        <div class="container-fluid">
-            <div class="row mainHeader">
-                <div class="col-sm-12"> 
-                    <h2 class="mainTitle">B O O K S T O R E</h2>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="row">
-                <div class="col-sm-12">
-                    <ul class="nav nav-tabs">
-                        <li role="navigation"><a ui-sref="booksList">Books</a></li>
-                        <li role="presentation"><a ui-sref="authorsList">Authors</a></li>
-                        <li role="presentation"><a ui-sref="editorialsList">Editorials</a></li>
-                        <ul class="nav nav-tabs navbar-right">
-                            <button type="button" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart Checkout
-                            </button>
-                        </ul>
-                    </ul>
-                </div>
-            </div>
-            <div class="span4" ui-view="mainView"></div>
-            <div class="footer">
-                <p class="footerTitle">Ejemplo Desarrollo de Sw en Equipos. Uniandes.2017 </p>
-            </div> 
+  </head>
+  <body class="span4">
+    <div class="container-fluid">
+      <div class="row mainHeader">
+        <div class="col-sm-12"> 
+          <h2 class="mainTitle">B O O K S T O R E</h2>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
         </div>
-    </body>
+      </div> 
+      <div id="alertPanel"></div>
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="nav nav-tabs">
+            <li role="navigation"><a ui-sref="booksList">Books</a></li>
+            <li role="presentation"><a ui-sref="authorsList">Authors</a></li>
+            <li role="presentation"><a ui-sref="editorialsList">Editorials</a></li>
+            <ul class="nav nav-tabs navbar-right">
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart Checkout
+              </button>
+            </ul>
+          </ul>
+        </div>
+      </div>
+      <div class="span4" ui-view="mainView"></div>
+      <div class="footer">
+        <p class="footerTitle">Ejemplo Desarrollo de Sw en Equipos. Uniandes.2017 </p>
+      </div> 
+    </div>
+  </body>
 </html>
