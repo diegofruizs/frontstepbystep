@@ -10,7 +10,6 @@
       <div class="col-md-3">
         <dl>     
           <dt>{{currentAuthor.name}}</dt>
-
           <hr>
           <dt>Birth Date</dt>
           <dd>{{currentAuthor.birthDate|date:'yyyy-MM-dd'}}</dd>
@@ -24,7 +23,8 @@
             <span class="span4 glyphicon glyphicon-star-empty"></span>
             {{award.awardyear|date:'yyyy'}}: {{award.name}}
           </dd>
-
+          <br/>
+          <a ui-sref="authorsUpdate({authorId: currentAuthor.id})" class="btn btn-info">Update Author</a>
         </dl>
 
       </div>

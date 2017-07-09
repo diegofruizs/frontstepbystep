@@ -67,6 +67,15 @@
             controller: 'authorCreateCtrl'
           }
         }
+      }).state('authorsUpdate', {
+        url: '/update/:authorId',
+        parent: 'authors',
+        views: {
+          'detailView': {
+            templateUrl: basePath + 'authors.create.html',
+            controller: 'authorUpdateCtrl'
+          }
+        }
       });
     }]);
 })(window.angular);
