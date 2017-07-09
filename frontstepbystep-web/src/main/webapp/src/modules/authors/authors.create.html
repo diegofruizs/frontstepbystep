@@ -1,0 +1,20 @@
+<form ng-submit="sendAuthor()" name="author">
+  <div class="row">
+    <label for="authorName" class="col-sm-2">Name:</label>
+    <input id="authorName" required ng-model="authorName" class="col-sm-6"/>
+  </div>
+  <div class="row">
+    <label for="authorBirthDate" class="col-sm-2">Birth Date:</label>
+    <input type="date" id="authorBirthDate" placeholder="DD/MM/YYYY" required ng-model="authorBirthDate" class="col-sm-6"/>
+  </div>
+  <div class="row">
+    <label for="authorDescription" class="col-sm-2">Biography:</label>
+    <textarea id="authorDescription" required ng-model="authorDescription" class="col-sm-6"></textarea>
+  </div>
+  <div class="row">
+    <label for="authorImage" class="col-sm-2">Image:</label>
+    <input id="authorImage" required ng-model="authorImage" class="col-sm-6"/>
+  </div>
+  <h3 ng-if="!author.$valid">All inputs are required</h3>
+  <input ng-show="author.$valid" type="submit" value="Send" class="btn btn-primary"/>
+</form>

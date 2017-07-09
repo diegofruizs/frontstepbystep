@@ -1,35 +1,35 @@
 <div class="panel panel-default"> 
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentAuthor.image}}"/>
-                </div>
-
-            </div>
-            <div class="col-md-3">
-                <dl>     
-                    <dt>{{currentAuthor.name}}</dt>
-
-                    <hr>
-                    <dt>Birth Date</dt>
-                    <dd>{{currentAuthor.birthDate|date:'yyyy-MM-dd'}}</dd>
-
-                    <hr>
-                    <dt>Bio</dt>
-                    <dd>{{currentAuthor.description}}</dd>
-                    <hr>
-                    <dt><li role="presentation" class="active"> <a ui-sref="awardsList()">Awards</a></li></dt>
-                    <dd ng-repeat="award in currentAuthor.awards">
-                        <span class="span4 glyphicon glyphicon-star-empty"></span>
-                        {{award.awardyear|date:'yyyy'}}: {{award.name}}
-                    </dd>
-
-                </dl>
-              
-            </div>
-            <div ui-view="childrenView"></div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="thumb">
+          <img class="img-responsive" ng-src="{{currentAuthor.image}}"/>
         </div>
+
+      </div>
+      <div class="col-md-3">
+        <dl>     
+          <dt>{{currentAuthor.name}}</dt>
+
+          <hr>
+          <dt>Birth Date</dt>
+          <dd>{{currentAuthor.birthDate|date:'yyyy-MM-dd'}}</dd>
+
+          <hr>
+          <dt>Bio</dt>
+          <dd>{{currentAuthor.description}}</dd>
+          <hr>
+          <dt><li role="presentation" class="active"> <a ui-sref="awardsList()">Awards</a></li></dt>
+          <dd ng-repeat="award in currentAuthor.awards">
+            <span class="span4 glyphicon glyphicon-star-empty"></span>
+            {{award.awardyear|date:'yyyy'}}: {{award.name}}
+          </dd>
+
+        </dl>
+
+      </div>
+      <div ui-view="childrenView"></div>
     </div>
+  </div>
 </div>
 
